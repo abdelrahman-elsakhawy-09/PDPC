@@ -1,0 +1,1218 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Color Palette */
+    --primary-color:#004950; /* Deep Blue for trust */
+    --secondary-color: #e9ecef; /* Light Grey for backgrounds */
+    --accent-color: #004950; /*  for actions/highlights */
+    --text-color: #333;
+    --heading-color: #004950; /* Darker blue for headings */
+    --light-text-color: #f8f9fa; /* For dark backgrounds */
+    --border-color: #dee2e6;
+    --white-color: #fff;
+    --footer-bg: #343a40; /* Dark grey for footer */
+
+    /* Fonts */
+    --font-family-arabic: 'Cairo', sans-serif;
+    --font-family-english: 'Roboto', sans-serif;
+}
+html {
+    scroll-behavior: smooth;
+}
+body {
+    font-family: var(--font-family-arabic);
+    line-height: 1.7;
+    color: var(--text-color);
+    background-color: var(--white-color);
+    direction: rtl; /* Right-to-left direction */
+    /* Sticky Footer Flexbox Setup */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+h1, h2, h3 {
+    color: var(--heading-color);
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+p {
+    margin-bottom: 1rem;
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+/* Rules needed in style.css */
+
+/* For hiding/showing panes */
+.content-pane {
+    display: none;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.content-pane.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* For styling sidebar links and selected state */
+.regulations-nav-list a {
+    /* Your existing link styles */
+    display: block;
+    padding: 10px 10px;
+    /* ... other styles */
+}
+
+.regulations-nav-list a.selected { /* Style for the selected link */
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    font-weight: bold;
+}
+.regulations-nav-list a.selected:hover {
+    background-color: var(--heading-color);
+}
+.regulations-nav-list a.selected .icon-sidebar { /* Style icon when selected */
+    color: inherit; /* Inherit the white color */
+}
+
+/* Other styles for .regulations-layout, .regulations-sidebar, etc. should exist */
+
+a:hover {
+    color: var(--accent-color);
+    /* text-decoration: underline; */ /* Optional */
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+ul {
+    list-style: none;
+    padding-right: 20px; /* Add some padding for list items in RTL */
+}
+li {
+     margin-bottom: 0.5rem;
+}
+
+/* ===== Buttons ===== */
+.btn {
+    display: inline-block;
+    padding: 10px 25px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    border: 1px solid transparent;
+    font-family: var(--font-family-arabic);
+    line-height: 1.5;
+}
+
+.btn-primary {
+    background-color:#004950 ;
+    color: var(--white-color);
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    background-color: #D0A862;
+    border-color:#D0A862 ;
+    color: var(--white-color);
+    text-decoration: none;
+}
+
+.btn-secondary {
+    background-color:#004950;
+    color:#ffffff;
+    border: 1px solid;
+}
+
+.btn-secondary:hover {
+    background-color:#D0A862;
+    color: var(--white-color);
+    text-decoration: none;
+}
+
+.btn-search {
+     background-color: var(--primary-color);
+     color: var(--white-color);
+     padding: 10px 15px;
+}
+.btn-search:hover {
+     background-color:#D0A862;
+     color: #ffffff;
+      text-decoration: none;
+}
+
+/* ===== Header ===== */
+.site-header {
+    background-color: var(--white-color);
+    padding: 15px 0;
+    border-bottom: 1px solid var(--border-color);
+    position:relative;
+    top:0;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    flex-shrink: 0; /* Part of Sticky Footer */
+}
+.site-header .container {
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+    align-items: center;
+}
+.logo img {
+    width: 250px;;
+    height: 100%;
+    display: block;
+}
+.home-logo img{
+    width: 50%;
+    height: 50%;
+}
+.main-navigation ul {
+    display: flex;
+    gap: 40px;
+    padding-right: 0;
+}
+.main-navigation a {
+    color: var(--text-color);
+    font-weight: bold;
+    padding: 5px 0;
+    position:relative;
+    text-decoration: none;
+}
+.main-navigation a:hover,
+.main-navigation a.active {
+    color:#d3ae6c;
+}
+.main-navigation a::after { /* Underline effect */
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    right: 0;
+    background-color:#004950;
+    transition: width 0.3s ease;
+}
+
+.main-navigation a:hover::after,
+.main-navigation a.active::after {
+    width: 100%;
+    left: 0;
+    right: auto;
+}
+
+.language-switcher a {
+    font-weight: bold;
+    color: #004950;
+    }
+.language-switcher a:hover{
+        color: #D0A862;
+    }
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--primary-color);
+}
+
+/* ===== Main Content Area ===== */
+main.page-wrapper {
+    flex-grow: 1;       /* Key part of Sticky Footer */
+    padding: 40px 0;    /* Padding for inner pages */
+}
+/* Fallback if .page-wrapper class isn't used */
+main {
+    flex-grow: 1;
+}
+.page-content h1 {
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+}
+.page-content h2 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+     border-bottom: 1px solid var(--border-color);
+     padding-bottom: 5px;
+}
+.page-content ul {
+    margin-bottom: 1.5rem;
+}
+.page-content li strong {
+    color: var(--heading-color);
+}
+
+/* ===== Hero Section (Homepage) ===== */
+.hero-section {
+    background-color: var(--secondary-color);
+    padding: 45px 0;
+    text-align: center;
+}
+
+.hero-section h1 {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+    color: var(--heading-color);
+    line-height: 1.3;
+}
+
+.hero-section p {
+    font-size: 1.2rem;
+    color: var(--text-color);
+    max-width: 700px;
+    margin: 0 auto 2rem auto;
+}
+
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.cta-buttons .btn {
+    font-size: 1.1rem;
+    padding: 12px 30px;
+}
+/* ===== Search Section (Homepage) ===== */
+.search-section {
+    padding: 30px 0;
+    background-color: var(--white-color);
+    border-bottom: 1px solid var(--border-color);
+}
+.search-section .container {
+    display: flex;
+    gap: 10px;
+}
+.search-section input[type="search"] {
+    flex-grow: 1;
+    padding: 10px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-family: var(--font-family-arabic);
+    font-size: 1rem;
+}
+
+/* ===== Features Section (Homepage) ===== */
+.features-section {
+    padding: 60px 0;
+    background-color: #f8f9fa;
+}
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.feature-card {
+    background-color: var(--white-color);
+    padding: 30px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+.feature-card .icon-placeholder {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+    line-height: 1;
+}
+
+.feature-card h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.feature-card p {
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+}
+
+.learn-more {
+    font-weight: bold;
+    color: var(--accent-color);
+    text-decoration: none;
+    margin-top: auto;
+}
+.learn-more:hover {
+    text-decoration: underline;
+    color:#D0A862;
+}
+
+/* ===== Law Explorer Specific Styles ===== */
+.law-explorer-interface {
+    margin-top: 30px;
+}
+
+.law-search-container {
+    margin-bottom: 20px;
+}
+
+#law-search-input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-family: var(--font-family-arabic);
+    font-size: 1rem;
+}
+
+.law-layout {
+    display: flex;
+    gap: 30px;
+    border-top: 1px solid var(--border-color);
+    padding-top: 20px;
+}
+
+.law-sidebar {
+    flex: 0 0 250px;
+    border-left: 1px solid var(--border-color);
+    padding-left: 20px;
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+.law-sidebar h2 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #eee;
+}
+
+#law-navigation-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#law-navigation-list li {
+    margin-bottom: 0;
+}
+
+#law-navigation-list a {
+    display: block;
+    padding: 8px 10px;
+    color: var(--text-color);
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+    font-size: 0.95rem;
+}
+
+#law-navigation-list a:hover {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+}
+
+#law-navigation-list a.selected {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    font-weight: bold;
+}
+#law-navigation-list a.selected:hover {
+    background-color: var(--heading-color);
+}
+
+
+.law-content-display {
+    flex-grow: 1;
+    padding-right: 20px;
+}
+
+.law-content-display h2 { /* Title of the displayed article */
+    font-size: 1.6rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+#article-text { /* Arabic text display */
+    line-height: 1.8;
+    color: #444;
+}
+#article-text p {
+    margin-bottom: 1em;
+}
+#article-text strong {
+    color: var(--heading-color);
+}
+#article-text-en { /* English text display */
+     margin-top: 20px;
+     padding-top: 15px;
+     border-top: 1px solid #eee;
+     font-family: var(--font-family-english);
+     text-align: left;
+     direction: ltr;
+     line-height: 1.8;
+     color: #444;
+}
+#article-text-en p {
+     margin-bottom: 1em;
+}
+
+
+/* ===== FAQ Page Specific Styles ===== */
+.faq-container {
+    margin-top: 30px;
+}
+
+.faq-container h2 { /* Category headings */
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--primary-color);
+    font-size: 1.6rem;
+    color: var(--primary-color);
+}
+.faq-container h2:first-of-type {
+     margin-top: 1rem;
+}
+
+
+.faq-item { /* The <details> element */
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 15px;
+}
+
+.faq-item:last-child {
+    border-bottom: none;
+}
+
+.faq-question { /* The <summary> element */
+    padding: 15px 10px;
+    padding-left: 40px; /* Space for custom arrow */
+    font-weight: bold;
+    cursor: pointer;
+    position: relative;
+    list-style: none; /* Remove default marker */
+    font-size: 1.1rem;
+    color: var(--heading-color);
+    transition: background-color 0.2s ease;
+}
+
+.faq-question:hover {
+    background-color: var(--secondary-color);
+}
+
+.faq-question::-webkit-details-marker {
+    display: none; /* Hide default arrow */
+}
+.faq-question::marker {
+     display: none; /* Hide default arrow */
+}
+
+/* Custom Arrow for FAQ */
+.faq-question::before {
+    content: '◀'; /* Arrow pointing left in RTL */
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%) rotate(0deg);
+    font-size: 0.8em;
+    color: var(--primary-color);
+    transition: transform 0.3s ease;
+}
+
+details[open] > .faq-question::before {
+    transform: translateY(-50%) rotate(-90deg); /* Rotate arrow down */
+}
+
+.faq-answer { /* The content div inside <details> */
+    padding: 5px 20px 20px 20px; /* Adjusted padding */
+    background-color: #fdfdfd;
+    line-height: 1.8;
+    color: var(--text-color);
+}
+
+.faq-answer p:last-child {
+    margin-bottom: 0;
+}
+
+
+/* ===== Footer ===== */
+.site-footer {
+    background-color: var(--footer-bg);
+    color: var(--light-text-color);
+    padding: 40px 0 20px 0;
+    text-align: center;
+    font-size: 0.9rem;
+    flex-shrink: 0; /* Part of Sticky Footer */
+}
+
+.site-footer a {
+    color: var(--light-text-color);
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+.site-footer a:hover {
+    color: var(--secondary-color);
+    text-decoration: underline;
+}
+
+.footer-links {
+    margin-bottom: 1.5rem;
+}
+.foo-logo{
+    width: 150px;
+    height: 10%;
+}
+
+.disclaimer {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    font-size: 0.8rem;
+    color: #adb5bd;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    border-top: 1px solid #555;
+    padding-top: 1rem;
+}
+.disclaimer p { margin-bottom: 0;}
+
+.copyright {
+    margin-top: 1rem;
+    color: #adb5bd;
+}
+.copyright p { margin-bottom: 0.2rem;}
+
+
+/* ===== Responsive Design ===== */
+@media (max-width: 992px) {
+    .hero-section h1 {
+        font-size: 2.2rem;
+    }
+     .hero-section p {
+        font-size: 1.1rem;
+    }
+     .cta-buttons .btn {
+        font-size: 1rem;
+        padding: 10px 25px;
+    }
+     .page-content h1 {
+         font-size: 1.8rem;
+     }
+     .page-content h2 {
+          font-size: 1.4rem;
+     }
+      .law-content-display h2 {
+         font-size: 1.4rem;
+     }
+      .faq-container h2 {
+         font-size: 1.4rem;
+     }
+}
+
+
+@media (max-width: 768px) {
+    /* Header Responsive */
+    .site-header .container {
+        flex-wrap: wrap;
+        position: relative;
+    }
+    .main-navigation {
+        display: none;
+        width: 100%;
+        order: 3;
+        background-color: var(--white-color);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        border-top: 1px solid var(--border-color);
+    }
+    .main-navigation.active {
+        display: block;
+    }
+    .main-navigation ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+        padding-right: 0;
+    }
+    .main-navigation li {
+       width: 100%;
+       text-align: center;
+       border-bottom: 1px solid var(--border-color);
+       margin-bottom: 0;
+    }
+    .main-navigation li:last-child {
+        border-bottom: none;
+    }
+     .main-navigation a {
+         display: block;
+         padding: 15px;
+         width: 100%;
+     }
+      .main-navigation a::after {
+         display: none;
+     }
+    .menu-toggle {
+        display: block;
+        order: 2;
+    }
+    .language-switcher {
+        order: 1;
+    }
+     .logo {
+         order: 0;
+         flex-basis: 70%; /* Give logo more space */
+     }
+
+    /* Hero Responsive */
+    .hero-section {
+        padding: 60px 0;
+    }
+    .hero-section h1 {
+        font-size: 1.8rem;
+    }
+    .hero-section p {
+        font-size: 1rem;
+    }
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+     .cta-buttons .btn {
+        width: 80%;
+        max-width: 300px;
+    }
+
+    /* Features Responsive */
+    .grid-container {
+         grid-template-columns: 1fr;
+    }
+
+     /* Search Responsive */
+    .search-section .container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+     .search-section input[type="search"] {
+         width: 100%;
+     }
+      .search-section button {
+         width: 100%;
+     }
+
+     /* Inner Pages Responsive */
+     .page-wrapper {
+         padding: 20px 0;
+     }
+      .page-content h1 {
+         font-size: 1.5rem;
+         margin-bottom: 20px;
+     }
+      .page-content h2 {
+         font-size: 1.3rem;
+     }
+
+     /* Law Explorer Responsive */
+    .law-layout {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .law-sidebar {
+        flex: 0 0 auto;
+        width: 100%;
+        border-left: none;
+        border-bottom: 1px solid var(--border-color);
+        padding-left: 0;
+        padding-bottom: 15px;
+        max-height: 300px;
+    }
+     .law-content-display {
+         padding-right: 0;
+     }
+     .law-content-display h2 {
+          font-size: 1.3rem;
+     }
+
+     /* FAQ Responsive */
+     .faq-container h2 {
+         font-size: 1.3rem;
+     }
+      .faq-question {
+         font-size: 1rem;
+         padding-left: 35px; /* Adjust padding for smaller arrow */
+     }
+      .faq-question::before {
+         left: 10px;
+     }
+      .faq-answer {
+         padding: 10px 15px 15px 15px;
+     }
+}
+/* Styling for Embedded Map */
+.map-container {
+    margin-top: 2.5rem;
+}
+
+.map-container h2 {
+    margin-bottom: 1rem;
+}
+
+.map-placeholder iframe {
+    border: 1px solid var(--border-color); /* Optional border */
+    border-radius: 5px;     /* Optional rounded corners */
+    max-width: 100%;        /* Ensure it doesn't overflow container */
+    height: 400px;          /* Default height, adjust as needed */
+}
+
+/* Adjust height on smaller screens if needed */
+@media (max-width: 576px) {
+    .map-placeholder iframe {
+        height: 300px;
+    }
+}
+/* ===== Regulations Page Specific Styles ===== */
+.regulations-layout {
+    display: flex;
+    gap: 30px;
+    border-top: 1px solid var(--border-color);
+    padding-top: 20px;
+    margin-top: 20px;
+}
+.regulations-sidebar {
+    flex: 0 0 280px; /* Slightly wider sidebar */
+    border-left: 1px solid var(--border-color); /* Separator line in RTL */
+    padding-left: 20px; /* Space before separator */
+    max-height: 75vh; /* Adjust height */
+    overflow-y: auto; /* Enable vertical scrollbar */
+}
+
+.regulations-sidebar h2 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #eee;
+    color: var(--heading-color);
+    /* Match image styling */
+    font-family: var(--font-family-english); /* Assuming English heading from image */
+    font-family: var(--font-family-arabic);
+    text-align: left;
+    direction: ltr; /* For English heading */
+}
+
+.regulations-nav-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.regulations-nav-list li {
+    margin-bottom: 0;
+}
+
+.regulations-nav-list a {
+    display: flex; /* Use flex for icon alignment */
+    align-items: center; /* Center icon vertically */
+    padding: 10px 10px; /* Adjust padding */
+    color: var(--text-color);
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    font-size: 0.9rem;
+    /* Match image styling */
+    font-family: var(--font-family-english); /* Assuming English links from image */
+    font-family: var(--font-family-arabic);
+    text-align: left;
+    direction: ltr; /* For English links */
+    border-bottom: 1px solid #f0f0f0; /* Subtle separator */
+}
+.regulations-nav-list li:last-child a {
+    border-bottom: none;
+}
+
+.regulations-nav-list a:hover {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+}
+
+.regulations-nav-list a.selected {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    font-weight: bold;
+}
+.regulations-nav-list a.selected:hover {
+    background-color: var(--heading-color);
+}
+
+.icon-sidebar { /* Styling for icons in the sidebar */
+    margin-right: 10px; /* Space between icon and text in LTR */
+    width: 16px; /* Fixed width for alignment */
+    text-align: center;
+    color: #888; /* Subtle icon color */
+    transition: color 0.2s ease;
+}
+.regulations-nav-list a:hover .icon-sidebar,
+.regulations-nav-list a.selected .icon-sidebar {
+    color: inherit; /* Icon color matches text on hover/select */
+}
+
+.regulations-content-display {
+    flex-grow: 1; /* Takes remaining space */
+    padding-right: 20px; /* Add padding for content in RTL */
+}
+
+.regulations-content-display h2 { /* Title of the displayed content */
+    font-size: 1.6rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+     border-bottom: 1px solid var(--border-color);
+     padding-bottom: 10px;
+}
+.regulations-content-display .content-area {
+    line-height: 1.8;
+}
+
+/* Responsive adjustments for Regulations Page */
+@media (max-width: 992px) {
+     .regulations-sidebar {
+         flex-basis: 220px; /* Slightly narrower on medium screens */
+     }
+}
+@media (max-width: 768px) {
+    .regulations-layout {
+        flex-direction: column; /* Stack sidebar and content */
+        gap: 20px;
+    }
+    .regulations-sidebar {
+        flex: 0 0 auto; /* Reset flex basis */
+        width: 100%;
+        border-left: none; /* Remove side border */
+        border-bottom: 1px solid var(--border-color); /* Add bottom border */
+        padding-left: 0; /* Reset padding */
+        padding-bottom: 15px; /* Add padding below */
+        max-height: none; /* Remove height restriction or adjust */
+        overflow-y: visible;
+    }
+     .regulations-content-display {
+         padding-right: 0; /* Reset padding */
+     }
+}
+
+
+/* ===== About Us Page & Tabs Styles ===== */
+.about-header {
+    text-align: center; /* Center the heading and subtitle */
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.about-header h1 {
+    /* Style like image */
+    direction: ltr;
+    text-align:right; /* Align heading left */
+    font-size: 1.8rem; /* Adjust size */
+    color: var(--heading-color);
+    margin-bottom: 0.5rem;
+    border-bottom: none; /* Remove default h1 border from page-content */
+    padding-bottom: 0;
+}
+
+.about-header .subtitle {
+     /* Style like image */
+    font-family: var(--font-family-arabic);
+    font-family: var(--font-family-arabic);
+    direction: ltr;
+    text-align: right; /* Align subtitle left */
+    font-size: 1rem;
+    color: var(--text-color);
+    margin-bottom: 0;
+}
+
+.tabs-navigation {
+    margin-bottom: 30px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 10px;
+}
+
+.tabs-navigation ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 10px; /* Spacing between tabs */
+    flex-wrap: wrap; /* Allow tabs to wrap on smaller screens */
+}
+
+.tabs-navigation li {
+     margin-bottom: 0; /* Reset default li margin */
+}
+
+.tabs-navigation a.tab-link {
+    display: inline-block;
+    padding: 10px 20px;
+    color: var(--text-color);
+    text-decoration: none;
+    border: 1px solid transparent; /* Base border */
+    border-bottom: none; /* Remove bottom border */
+    border-radius: 5px 5px 0 0; /* Rounded top corners */
+    font-size: 0.95rem;
+    font-weight: normal; /* Default state */
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    cursor: pointer;
+    /* Match image style */
+    font-family: var(--font-family-arabic);
+     direction: ltr;
+     background-color: #f8f9fa; /* Light background for inactive tabs */
+     border-color: var(--border-color);
+}
+
+.tabs-navigation a.tab-link:hover {
+    color: var(--primary-color);
+    background-color: #e9ecef; /* Slightly darker on hover */
+}
+
+.tabs-navigation a.tab-link.active {
+    font-weight: bold; /* Make active tab bold */
+    color: var(--white-color); /* Text color for active tab */
+    background-color: var(--accent-color); /* Background color like image */
+    border-color: var(--accent-color); /* Border matches background */
+}
+
+/* Tab Content Styling */
+.tabs-content {
+    margin-top: 20px;
+}
+
+.tab-pane {
+    display: none; /* Hide all panes by default */
+    animation: fadeIn 0.5s ease-in-out; /* Simple fade-in animation */
+}
+
+.tab-pane.active {
+    display: block; /* Show only the active pane */
+}
+
+.tab-pane h2 {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    padding-bottom: 5px;
+     border-bottom: 1px solid #eee;
+}
+.tab-pane h3 {
+     font-size: 1.2rem;
+     margin-top: 1.5rem;
+     margin-bottom: 0.8rem;
+     color: var(--heading-color);
+}
+
+.tab-pane ul {
+     margin-bottom: 1rem;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Responsive adjustments for Tabs */
+@media (max-width: 768px) {
+     .tabs-navigation a.tab-link {
+         padding: 8px 15px;
+         font-size: 0.9rem;
+     }
+     .about-header h1 {
+          font-size: 1.5rem;
+      }
+      .about-header .subtitle {
+           font-size: 0.9rem;
+       }
+}
+/* ===== Services Page Specific Styles ===== */
+
+/* Reuse layout styles if suitable, or use new classes */
+.services-layout {
+    /* Inherits from .regulations-layout or define similar styles */
+    display: flex;
+    gap: 30px;
+    border-top: 1px solid var(--border-color);
+    padding-top: 20px;
+    margin-top: 20px;
+}
+
+.services-sidebar {
+    /* Inherits from .regulations-sidebar or define similar */
+    flex: 0 0 250px; /* Adjust width as needed */
+    border-left: 1px solid var(--border-color);
+    padding-left: 20px;
+    max-height: 75vh;
+    overflow-y: auto;
+}
+
+.services-sidebar h2 {
+    /* Inherits or define similar */
+    font-family: var(--font-family-arabic);
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #eee;
+    color: var(--heading-color);
+    text-align: center;
+}
+
+.services-nav-list ol { /* Style ordered list */
+    list-style: none; /* Remove default bullets */
+    counter-reset: service-counter; /* Initialize counter */
+    padding: 0;
+    margin: 0;
+}
+
+.services-nav-list li {
+    margin-bottom: 0;
+    list-style: none;
+    position: relative;
+    padding-right: 35px; /* Space for the number */
+    border-bottom: 1px solid #f0f0f0;
+}
+.services-nav-list li:last-child {
+    border-bottom: none;
+}
+.services-nav-list a.service-link {
+    display: block;
+    padding: 12px 5px 12px 0; /* Adjust padding */
+    color: var(--text-color);
+    position: relative;
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    font-size: 1rem; /* Adjust font size */
+}
+.services-nav-list a.service-link:hover {
+    /* background-color: var(--secondary-color); Optional hover */
+    color: var(--primary-color);
+}
+
+.services-nav-list a.service-link.active {
+    color: var(--accent-color); /* Highlight active link text */
+    font-weight: bold;
+}
+.services-content-display {
+    /* Inherits from .regulations-content-display or define similar */
+    flex-grow: 1;
+    padding-right: 20px;
+}
+
+.services-content-display h2 { /* Title (e.g., التدريب والتوعية) */
+    /* Inherits or define similar */
+    font-family: var(--font-family-arabic);
+    color: var(--primary-color);
+    margin-bottom: 20px;
+     border-bottom: 1px solid var(--border-color);
+     padding-bottom: 10px;
+}
+
+/* Styling for subsections within a service pane */
+.service-subsection {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px dashed #eee; /* Optional separator */
+}
+.service-subsection:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.service-subsection h3 {
+    font-family: var(--font-family-arabic);
+    color: var(--heading-color);
+    margin-bottom: 0.8rem;
+}
+
+/* Responsive adjustments for Services Page */
+@media (max-width: 768px) {
+    .services-layout {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .services-sidebar {
+        flex: 0 0 auto;
+        width: 100%;
+        border-left: none;
+        border-bottom: 1px solid var(--border-color);
+        padding-left: 0;
+        padding-bottom: 15px;
+        max-height: none;
+        overflow-y: visible;
+    }
+     .services-content-display {
+         padding-right: 0;
+     }
+}
+/* Rules for hiding/showing content panes (should already be in style.css) */
+.content-pane {
+    display: none;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.content-pane.active {
+    display: block;
+}
+
+/* Re-use fade-in animation if not already defined */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Ensure active link style exists (example) */
+.services-nav-list a.service-link.active {
+    color: var(--accent-color);
+    font-weight: bold;
+}
+
+.description-box {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-top: 20px;
+    direction: rtl; /* Right-to-left for Arabic */
+    background-color: #f9f9f9;
+    font-family: 'Arial', sans-serif;
+    white-space: pre-wrap;
+    line-height: 1.8;
+    border-radius: 8px;
+  }
+  
+  .description-box p {
+    margin: 5px 0;
+  }
+  

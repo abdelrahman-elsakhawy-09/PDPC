@@ -1,0 +1,185 @@
+/* ==== بداية كود CSS الخاص بالبطاقات والتفاصيل ==== */
+.media-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  padding: 30px 0;
+}
+
+/* تمت إزالة التنسيقات المباشرة من البطاقة لتطبيقها على الرابط */
+.media-card {
+   /* لا حاجة لتنسيق كثير هنا إذا كان الرابط يغلف المحتوى */
+   /* يمكن الإبقاء على border أو إزالته حسب التصميم المطلوب */
+   border: 1px solid #e0e0e0;
+   overflow: hidden; /* للمحافظة على شكل clip-path */
+}
+
+/* جعل الرابط هو الذي يحمل التأثيرات ويملأ البطاقة */
+.media-card a.info-link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    background-color: #ffffff;
+    clip-path: polygon(10% 0, 100% 0, 100% 90%, 90% 100%, 0 100%, 0 10%);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.media-card a.info-link:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+
+.media-card-image {
+  position: relative;
+  line-height: 0; /* لإزالة أي مسافات إضافية حول الصورة */
+}
+
+
+.media-card-image img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block; /* لإزالة المسافات السفلية للصورة */
+}
+
+
+.media-card-date {
+  position: absolute;
+  bottom: -15px; /* لجعله يبرز قليلاً */
+  right: 2px;
+  background-color:#d3ae6c;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 4px;
+  text-align: center;
+  font-size: 0.9em;
+  line-height: 1.2;
+  z-index: 1;
+}
+
+.media-card-date span {
+  display: block;
+  font-weight: bold;
+}
+ /* تعديل بسيط لتمييز السنة */
+ .media-card-date span:nth-child(2) {
+   font-size: 0.85em;
+   font-weight: normal;
+ }
+ .media-card-date span:last-child {
+   font-size: 0.85em;
+   font-weight: normal;
+ }
+
+
+.media-card-content {
+  padding: 15px 20px;
+  flex-grow: 1; /* يسمح لهذا القسم بالتمدد لملأ المساحة المتبقية */
+  display: flex;
+  flex-direction: column; /* لترتيب العناصر عمودياً */
+}
+
+.media-card-content h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 1.15em;
+  color: #333;
+  line-height: 1.4;
+}
+
+.media-card-content p {
+  font-size: 0.95em;
+  color: #555;
+  margin-bottom: 15px;
+  line-height: 1.6;
+  flex-grow: 1; /* يجعل الوصف يتمدد لدفع الموقع للأسفل */
+}
+
+
+ .media-card-content p.location {
+     font-size: 0.9em;
+     color: #777;
+     margin-bottom: 0; /* إزالة الهامش السفلي */
+     margin-top: auto; /* يدفع هذا العنصر للأسفل */
+     flex-grow: 0; /* لا يتمدد */
+ }
+ .media-card-content p.location i {
+     margin-left: 6px; /* Use margin-left in RTL */
+     color: #d3ae6c;
+     font-size: 0.95em;
+ }
+
+  /* تنسيق حاوية التفاصيل */
+  #details-container {
+      border: 1px solid #e0e0e0;
+      padding: 25px;
+      margin-top: 30px;
+      background-color: #f9f9f9;
+      border-radius: 5px;
+      /* إضافة clear: both إذا كان زر الإغلاق يسبب مشاكل في التخطيط */
+       overflow: hidden; /* بديل أفضل لـ clear: both في بعض الحالات */
+  }
+  #details-container h2 {
+      color: #333;
+      margin-top: 0; /* إزالة الهامش العلوي */
+      margin-bottom: 15px;
+  }
+  #details-container img {
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 15px;
+      border-radius: 4px;
+      display: block; /* تأكيد العرض كبلوك */
+  }
+  #details-container p {
+      color: #555;
+      line-height: 1.7;
+      margin-bottom: 10px;
+  }
+  #details-container p.detail-location,
+  #details-container p.detail-date {
+      font-size: 0.95em;
+      color: #777;
+  }
+  #details-container p.detail-location i {
+      margin-left: 6px;
+      color: #d3ae6c;
+  }
+  #close-details {
+      float: left; /* لظهوره على اليسار في واجهة RTL */
+      background-color: #d3ae6c;
+      color: white;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: 'Cairo', sans-serif;
+      transition: background-color 0.2s ease;
+      margin-bottom: 10px; /* إضافة هامش سفلي للزر */
+  }
+  #close-details:hover {
+      background-color: #b89a5a;
+  }
+
+@media (max-width: 992px) {
+    .media-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .media-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+     .media-card-image img {
+        height: 250px;
+    }
+}
+/* ==== نهاية كود CSS الخاص بالبطاقات والتفاصيل ==== */
+
