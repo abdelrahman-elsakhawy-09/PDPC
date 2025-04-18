@@ -655,6 +655,40 @@ details[open] > .faq-question::before {
         right: 0;
         box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         border-top: 1px solid var(--border-color);
+        /* ===== Footer Responsive ===== */
+@media (max-width: 768px) {
+    /* --- أضف هذه القواعد داخل الـ Media Query --- */
+  
+    .footer-content-wrapper {
+      flex-direction: column; /* تغيير الترتيب ليصبح عمودياً */
+      gap: 20px;             /* المسافة بين الشعار والقائمة */
+      text-align: center;    /* توسيط النص بشكل عام كإجراء احتياطي */
+    }
+  
+    .logo-container img {
+        width: 60%; /* تصغير الشعار قليلاً على الشاشات الصغيرة */
+        height: auto;
+        margin: 0 auto 10px auto; /* توسيط الشعار وإضافة هامش سفلي */
+    }
+  
+    .footer-nav ul {
+      flex-direction: column;  /* جعل عناصر القائمة تحت بعضها */
+      align-items: center;   /* توسيط عناصر القائمة */
+      gap: 10px;             /* المسافة بين الروابط */
+      width: 100%;           /* جعل القائمة تأخذ كامل العرض */
+    }
+  
+    .footer-nav ul li {
+      width: 100%;           /* جعل كل عنصر يأخذ كامل العرض */
+      text-align: center;    /* توسيط النص داخل كل عنصر */
+    }
+  
+     .footer-nav ul li a {
+        padding: 8px 0;     /* زيادة المساحة للضغط بسهولة */
+        display: block;     /* جعل الرابط يملأ المساحة */
+     }
+     /* --- نهاية القواعد المضافة --- */
+  }
     }
     .main-navigation.active {
         display: block;
