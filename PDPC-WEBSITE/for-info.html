@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>معلومات وخدمات - حماية البيانات</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Roboto:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        /* تم تحديث المحدد ليتوافق مع data-content-id الجديد */
+        .services-nav-list a[data-content-id="specialists-info"] {
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="logo">
+                <a href="home.html">
+                    <img src="logo/PDPC logo-01.svg" alt="logo">
+                </a> </div>
+            <nav class="main-navigation">
+                <ul>
+                    <li><a href="home.html">الرئيسية</a></li>
+                    <li class="dropdown">
+                        <a href="about.html">نبذة عنا</a>
+                    </li>
+                    <li><a href="for-services.html" class="active">الخدمات</a></li>
+                    <li><a href="regulations.html">اللوائح</a></li>
+                    <li><a href="faq.html">الأسئلة المتكررة</a></li>
+                    <li><a href="media-center.html">مركز الاعلام</a></li>
+                </ul>
+            </nav>
+            <div class="language-switcher">
+                <a href="#">English</a>
+            </div>
+            <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button> </div>
+    </header>
+
+    <main class="page-wrapper">
+        <section class="page-content container">
+            <div class="regulations-layout services-layout">
+                <aside class="services-sidebar">
+                    <nav class="services-nav-list">
+                        <ol>
+                            <li>
+                                <a href="#" class="service-link active" data-content-id="individuals-info">
+                                    الافراد
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="service-link" data-content-id="organizations-info">
+                                    منظمات
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="service-link" data-content-id="specialists-info">
+                                    اخصائيو حماية البيانات
+                                </a>
+                            </li>
+                        </ol>
+                    </nav>
+                </aside>
+
+                <article class="regulations-content-display services-content-display">
+                    <h2 id="service-content-title">التدريب والتوعية</h2>
+                    <div class="content-area">
+                        <div id="individuals-info" class="content-pane active">
+                            <div class="service-subsection">
+                                <h3>في كل مرة تتفاعل فيها مع موقع إلكتروني أو تطبيق أو خدمة عبر الإنترنت، تترك وراءنا بصمة رقمية.</h3>
+                                <p>انظر إلى بياناتك الشخصية على أنها بصمة فريدة من نوعها.</p>
+                                <p>فكلما تفاعلت عبر الإنترنت تركت أثراً يمثل جزءاً من معلوماتك الخاصة عندما تتصل هذه النقاط، فإنها تشكل نمطاً فريداً يحدد هويتك.</p>
+                                <p>وبصفتك شخصاً معنياً بالبيانات، يحق لك فهم كيفية جمعها واستخدامها وحمايتها، كما يمكنك طلب تصحيحها أو حذفها. <a href="#">[رابط - الحقوق والمسؤوليات]</a></p>
+                            </div>
+                            <div class="service-subsection">
+                                <h3>بصفتك فرداً، يمكنك أيضاً أن تكون:</h3>
+                                <ul>
+                                    <li><i class="fa-regular fa-circle-check" style="color: #d3ae6c;"></i> متحكم بالبيانات</li>
+                                    <li><i class="fa-regular fa-circle-check" style="color: #d3ae6c;"></i> معالج للبيانات</li>
+                                    <li><i class="fa-regular fa-circle-check" style="color: #d3ae6c;"></i> مسؤول حماية البيانات DPO</li>
+                                    <li><i class="fa-regular fa-circle-check" style="color: #d3ae6c;"></i> مستشار حماية البيانات</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div id="organizations-info" class="content-pane">
+                            <div class="service-subsection">
+                                <h3>هل تعمل مؤسستك في مصر أو تعالج بيانات مواطنيها؟</h3>
+                                <p>في هذه الحالة، فإن الإلمام بقوانين ولوائح قانون حماية البيانات في البلاد أمر بالغ الأهمية. وبغض النظر عن حجم مؤسستك أو طبيعة عملها، فإن الامتثال لهذه القوانين ضروري لكسب ثقة عملائك.</p>
+                                <p>وفقًا لقانون حماية البيانات، يمكن تقسيم مستخدمي البيانات إلى فئتين رئيسيتين: المتحكم والمعالج. حيث يتولى المتحكم وضع القواعد الأساسية لاستخدام وتخزين البيانات الشخصية بالمؤسسة، بينما يقوم المعالج بمهام معالجة البيانات في ظل ما يضعه المتحكم من قواعد.</p>
+                            </div>
+                            <div class="service-subsection">
+                                <h3>بصفتك منظمة يمكنك أن تكون:</h3>
+                                <ul>
+                                    <li><i class="fa-regular fa-circle-check" style="color: #d3ae6c;"></i>جهة حكومية </li>
+                                    <li><i class="fa-regular fa-circle-check" style="color: #d3ae6c;"></i>شركات/اعمال حرة</li>
+                                    <li><i class="fa-regular fa-circle-check" style="color: #d3ae6c;"></i>منظمة غير حكومية</li>
+                                    <li><i class="fa-regular fa-circle-check" style="color: #d3ae6c;"></i> منظمة حكومية</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div id="specialists-info" class="content-pane">
+                            <h3>يتيح مركز حماية البيانات الشخصية آفاقًا واسعة أمام الأشخاص المهتمين بالاحتراف في هذا المجال، وذلك من خلال تأهيل واعتماد مسؤولي ومستشاري حماية البيانات.</h3>
+                            <p>يضمن مسؤول حماية البيانات امتثال المؤسسة التي يعمل بها لقوانين حماية البيانات الشخصية، حيث يعمل كحلقة وصل بين المؤسسة والمراكز والأفراد الذين تتم معالجة بياناتهم. أما مستشار حماية البيانات، فيقدم إرشادات وحلولاً بشأن خصوصية البيانات للمؤسسات بكافة أشكالها.</p>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+    </main>
+    <footer class="footer-bar">
+        <div class="footer-content-wrapper">
+          <div class="logo-container">
+            <img src="logo/PDPC logo-01.svg" alt="PDPC Logo">
+            </div>
+          <nav class="footer-nav">
+            <ul>
+              <li><a href="home.html">الرئيسية</a></li>
+              <li><a href="about.html">نبذة عنا</a></li>
+              <li><a href="for-services.html">الخدمات</a></li>
+              <li><a href="regulations.html">اللوائح</a></li>
+              <li><a href="faq.html">الأسئلة المتكررة</a></li>
+              <li><a href="media-center.html">المركز الاعلامي</a></li>
+              <li><a href="contact.html">تواصل معنا</a></li>
+
+            </ul>
+          </nav>
+        </div>
+      </footer>
+    <script src="script.js"></script>
+    <script src="services.js"></script>
+</body>
+</html>
